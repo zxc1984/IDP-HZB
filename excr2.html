@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app="app">
+  <header>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>
+    <script language="javascript" type="text/javascript">
+      angular.module('app', []);
+      
+      //Whatever you put on the controller scope,
+      //will be availalble in the HTML element bound to the controller.
+      function MyController($scope){
+        $scope.newMessage = "";
+        $scope.messages = []; 
+        
+        $scope.add = function(){
+          $scope.messages.push($scope.newMessage);
+        };
+      }
+    </script>
+  </header>
+  
+  <body ng-controller="MyController">
+    Leave a message:<br>     
+    <input type="text" ng-model="newMessage" placeholder="Type something...">
+    <span class="btn btn-primary" ng-click="add()">new message</span>
+    <br>
+    Messages: <br>
+    <ul>
+      <li ng-repeat="message in messages">
+        {{message}}
+      </li>
+    </ul>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+  </body>
+  
+</html>
